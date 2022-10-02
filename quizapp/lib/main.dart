@@ -4,10 +4,11 @@ import 'package:flutter/foundation.dart';
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 import 'package:quiz_app/routes.dart';
+import 'package:quiz_app/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: App()));
+  runApp(const MaterialApp(home: App()));
 }
 
 /// We are using a StatefulWidget such that we only create the [Future] once,
@@ -44,11 +45,12 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             routes: appRoutes,
+            theme: appTheme,
           );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Text('loading');
+        return const Text('loading');
       },
     );
   }
