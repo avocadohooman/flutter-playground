@@ -21,4 +21,27 @@ class FirestoreService {
     var snapshot = await ref.get();
     return Quiz.fromJson(snapshot.data() ?? {});
   }
+
+  Stream<Report> streamReport() {
+    return AuthService().userStream.switchMap((user) {
+      if (user != null) {
+        var ref = _db.collection("reports").doc(user.uid);
+        return ref.snapshots().map((event) => Report.fromJson(event.data()!));
+      }
+      return Stream.fromIterable([]);
+    });
+  }
+
+  Future<void> updateUserReport(Quiz quiz) {
+    var user = AuthService().user!;
+    var ref = _db.collection("reports").doc(user.uid);
+
+    var data = {
+      "total": FieldValue.increment(1),
+      "topics": {
+        quiz.topic: FieldValue.arrayUnion([quiz.id]),
+      }
+    };
+    return ref.set(data, SetOptions(merge: true));
+  }
 }
