@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:quiz_app/services/firestore.dart';
 import 'package:quiz_app/shared/bottom_nav.dart';
 import 'package:quiz_app/shared/loading.dart';
+import 'package:quiz_app/topics/topic_item.dart';
 
 import '../services/models.dart';
 import '../shared/error_message.dart';
@@ -36,7 +37,7 @@ class Topics extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               crossAxisSpacing: 10.0,
               crossAxisCount: 2,
-              children: topics.map((topic) => Text(topic.title)).toList(),
+              children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
           );
