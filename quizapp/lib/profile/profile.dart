@@ -51,7 +51,7 @@ class Profile extends StatelessWidget {
               ),
               const Spacer(),
               ElevatedButton(
-                child: Text('sign out'),
+                child: const Text('sign out'),
                 onPressed: () async {
                   await AuthService().signOut();
                   Navigator.of(context)

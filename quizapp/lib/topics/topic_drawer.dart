@@ -67,7 +67,7 @@ class QuizList extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 subtitle: Text(
-                  topic.description,
+                  quiz.description,
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
                 leading: QuizBadge(topic: topic, quizId: quiz.id),
