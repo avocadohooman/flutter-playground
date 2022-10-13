@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:quiz_app/services/firestore.dart';
 import 'package:quiz_app/shared/bottom_nav.dart';
 import 'package:quiz_app/shared/loading.dart';
+import 'package:quiz_app/topics/topic_drawer.dart';
 import 'package:quiz_app/topics/topic_item.dart';
 
 import '../services/models.dart';
@@ -31,6 +32,9 @@ class Topics extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.deepPurple,
               title: const Text('topics'),
+            ),
+            drawer: TopicDrawer(
+              topics: topics,
             ),
             body: GridView.count(
               primary: false,
